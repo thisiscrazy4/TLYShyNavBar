@@ -227,6 +227,7 @@ static inline CGFloat AACStatusBarHeight()
 - (void)prepareForDisplay
 {
     [self.navBarController expand];
+    [self.viewController.navigationController setNavigationBarHidden:NO animated:YES];
     self.previousYOffset = NAN;
 }
 
@@ -243,7 +244,8 @@ static inline CGFloat AACStatusBarHeight()
 
 - (void)cleanup
 {
-    [self.navBarController expand];
+// [self.navBarController expand];
+    [self.viewController.navigationController setNavigationBarHidden:YES animated:YES];
     self.previousYOffset = NAN;
 }
 
