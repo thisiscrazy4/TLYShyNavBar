@@ -182,7 +182,15 @@ static inline CGFloat AACStatusBarHeight()
     UINavigationController *navController = self.viewController.navigationController;
     if (navController.isNavigationBarHidden)
     {
-        [navController setNavigationBarHidden:NO animated:NO];
+        [navController setNavigationBarHidden:NO animated:YES];
+        
+        CGPoint newContentOffset = self.scrollView.contentOffset;
+        newContentOffset.y -= CGRectGetHeight(self.navBarController.view.bounds);
+        
+        [UIView animateWithDuration:0.15
+                         animations:^{
+                             self.scrollView.contentOffset = newContentOffset;
+                         }];
     }
 }
 
