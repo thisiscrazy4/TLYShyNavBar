@@ -138,7 +138,11 @@ static inline CGFloat AACStatusBarHeight()
     [self.viewController.view addSubview:self.extensionViewContainer];
     
     self.navBarController.view = navbar;
-    
+   
+    if (!viewController.navigationController.navigationBar.translucent) {
+        self.viewController.extendedLayoutIncludesOpaqueBars = YES;
+    }
+     
     [self layoutViews];
 }
 
